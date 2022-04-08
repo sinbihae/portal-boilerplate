@@ -1,0 +1,2 @@
+## billing api test
+GET http://localhost:9548/ncp/getDemandCostList?startMonth=202106&endMonth=202106

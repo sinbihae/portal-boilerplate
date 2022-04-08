@@ -7,7 +7,6 @@
 
 
 ## prettier
-
 1. prettierc 추가
 ```json
 {
