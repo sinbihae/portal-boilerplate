@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from '../service/auth.service';
+import { JwtGuard } from '../guards/jwt.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -21,7 +22,8 @@ export class AuthController {
   }
 
   //JWT Token으로 인증하고 접근을 허용
-  @UseGuards(AuthGuard('jwt'))
+  // @UseGuards(AuthGuard('jwt'))
+  @UseGuards(JwtGuard)
   @Get('profile')
   async getProfile(@Req() req) {
     return req.user;

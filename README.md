@@ -30,7 +30,19 @@
 - nest g service users
 - nest g controller users
 
+## HTTP 모듈
+
+
+## Typeorm 연동
+
+
+## Redis 연동
+
+
+
 ## 인증방법
+: https://docs.nestjs.kr/security/authentication
+
 ### 1단계 local.strategy(ID/PWD로 확인 하는 방법)로 로그인해서 ACCESS-TOKEN을 발급
 yarn add passport-local
 
