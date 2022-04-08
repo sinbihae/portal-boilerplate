@@ -4,6 +4,7 @@
 - yarn add @types/uuid //UUID
 - yarn add @nestjs/axios //HTTP 모듈 설정
 - yarn add crypto-js //ncp 인증 처리
+- yarn add @nestjs/passport passport passport-local @nestjs/jwt passport-jwt // 인증 모듈 
 
 
 ## prettier
@@ -23,3 +24,17 @@
 ```
 2. prettier에서 On Save 옵셔 켜기
 3. inspection에서 ESLint 옵션 끄기
+
+## nestjs 파일 생성
+- nest g module users
+- nest g service users
+- nest g controller users
+
+## 인증방법
+### 1단계 local.strategy(ID/PWD로 확인 하는 방법)로 로그인해서 ACCESS-TOKEN을 발급
+yarn add passport-local
+
+
+### 2단계 jwt.strategy(TOKEN으로 확인 하는 방법)로 허가를 체크하고 허용
+yarn add @nestjs/jwt passport-jwt
+
