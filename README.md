@@ -50,3 +50,18 @@ yarn add passport-local
 ### 2단계 jwt.strategy(TOKEN으로 확인 하는 방법)로 허가를 체크하고 허용
 yarn add @nestjs/jwt passport-jwt
 
+## 보안
+### 패스워드 DB 저장시 단방향 암호화
+### 데이터 전송시 양방향 암호화 
+
+
+## Docker image 생성
+
+
+## Docker 배포
+
+
+## Docker Swarm 배포
+
+
+## K8S 배포
