@@ -52,14 +52,30 @@ yarn add @nestjs/jwt passport-jwt
 
 ## 보안
 ### 패스워드 DB 저장시 단방향 암호화
+
 ### 데이터 전송시 양방향 암호화 
 
 
 ## Docker image 생성
+1단계. Dockerfile, .dockerignore 파일 생성
+2단계. image 생성
+```
+docker build -t koscom/portal-boilerplate:v0.0.1 .
+```
+3단계. image 확인
+```
+docker images
+```
 
+참고
+https://ivvve.github.io/2020/03/23/js/nestjs/nest-docker/
 
-## Docker 배포
-
+## Docker 실행
+```
+docker run koscom/portal-boilerplate:v0.0.1
+docker ps
+docker stop 11111111
+```
 
 ## Docker Swarm 배포
 
