@@ -54,6 +54,7 @@ yarn add @nestjs/jwt passport-jwt
 ### 패스워드 DB 저장시 단방향 암호화
 
 참고
+
 https://velog.io/@tkdfo93/Node-Express-Crypto-%EB%AA%A8%EB%93%88%EC%9D%84-%ED%86%B5%ED%95%9C-%ED%95%B4%EC%8B%B1-Final-Project
 
 
@@ -61,7 +62,9 @@ https://velog.io/@tkdfo93/Node-Express-Crypto-%EB%AA%A8%EB%93%88%EC%9D%84-%ED%86
 비대칭키 방식
 
 대칭키 방식
+
 참고
+
 https://blog.naver.com/PostView.naver?blogId=01075970528&logNo=222484380977&parentCategoryNo=&categoryNo=10&viewDate=&isShowPopularPosts=true&from=search
 
 ## Docker image 생성
