@@ -1,2 +1,7 @@
 ## billing api test
-GET http://localhost:9548/ncp/getDemandCostList?startMonth=202106&endMonth=202106
+GET http://localhost:9548/api/ncp/getDemandCostList?startMonth=202106&endMonth=202106
+
+
+
+## ncp platform api test
+GET http://localhost:9548/api/ncp/portal/v1/join/address

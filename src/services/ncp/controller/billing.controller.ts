@@ -2,7 +2,7 @@ import { Controller, Get, Query } from '@nestjs/common';
 import { BillingService } from '../../../client/ncp/service/billing.service';
 import { BILLING_URL } from '../../../client/ncp/common/constants';
 
-@Controller('ncp')
+@Controller('api/ncp')
 export class BillingController {
   constructor(private readonly billingService: BillingService) {}
   @Get('getDemandCostList')

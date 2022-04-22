@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { HttpModule } from '@nestjs/axios';
 import { ServerService } from './service/server.service';
 import { BillingService } from './service/billing.service';
+import { NcpService } from './service/ncp.service';
 
 @Module({
   imports: [
@@ -10,7 +11,7 @@ import { BillingService } from './service/billing.service';
       maxRedirects: 5,
     }), //HTTP 모듈 설정
   ],
-  providers: [ServerService, BillingService],
-  exports: [ServerService, BillingService],
+  providers: [NcpService, ServerService, BillingService],
+  exports: [NcpService, ServerService, BillingService],
 })
 export class NcpClientModule {}
