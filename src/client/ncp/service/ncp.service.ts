@@ -1,8 +1,8 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { HttpException, Injectable, Logger } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { Request } from 'express';
-import { map } from 'rxjs';
+import { catchError, map } from 'rxjs';
 import { Method } from 'axios';
+import { makeNaverCloudSignature } from '../auth/signature';
 
 class AxiosResponse<T> {}
 
@@ -13,34 +13,32 @@ export class NcpService {
 
   constructor(private httpService: HttpService) {}
 
-  async connect(req): Promise<any> {
-    let host = 'https://mle9v7uqkt.apigw.fin-ntruss.com/';
-    let url: String = req.url.repace('/api/ncp', '');
-    let header = req.headers;
-    let method: Method = req.method;
-    let body = req.body;
+  async connect(host, req?): Promise<any> {
+    let url = String(req.url).replace('/api/ncp', '');
 
-    console.log(url);
-    console.log(header);
-    console.log(method);
-    // console.log(body);
+    let header = {
+      //api키 일때
+      'X-NCP-APIGW-API-KEY': process.env.API_KEY,
+      //access_key 일때
+      ...makeNaverCloudSignature(url, req.method, process.env.NAVER_ACCESS_KEY, process.env.NAVER_SECRET_KEY, req.quer),
+    };
 
     return this.httpService
       .request({
-        url: 'https://mle9v7uqkt.apigw.fin-ntruss.com/portal/v1/join/address?keyword=%EC%97%AC%EC%9D%98%EB%8F%84',
-        headers: { 'X-NCP-APIGW-API-KEY': 'A5Ra80k0N084OLeKSU9O1WFfrHMIZpZZt8p8zIRT' },
-        method: method,
+        url: `${host}${url}`,
+        headers: header,
+        method: req.method,
+        data: req.body,
       })
-      .pipe(map((response) => response.data))
-      .toPromise();
+      .pipe(
+        map((response) => response.data),
+        catchError((e) => {
+          console.log(e.request.url);
+          console.log(e.response.data);
+          throw new HttpException(e.response.data, e.response.status);
+        })
+      )
 
-    // return this.httpService
-    //   .get('https://mle9v7uqkt.apigw.fin-ntruss.com/portal/v1/join/address?keyword=%EC%97%AC%EC%9D%98%EB%8F%84', {
-    //     headers: {
-    //       'X-NCP-APIGW-API-KEY': 'A5Ra80k0N084OLeKSU9O1WFfrHMIZpZZt8p8zIRT',
-    //     },
-    //   })
-    //   .pipe(map((response) => response.data))
-    //   .toPromise();
+      .toPromise();
   }
 }

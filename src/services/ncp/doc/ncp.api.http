@@ -1,0 +1,8 @@
+### billing api test
+GET http://127.0.0.1:9548/api/ncp/billing/v1/cost/getDemandCostList?startMonth=202105&endMonth=202106
+
+### ncp platform api test
+GET http://127.0.0.1:9548/api/ncp/portal/v1/join/address?keyword=%EC%97%AC%EC%9D%98%EB%8F%84
+
+
+

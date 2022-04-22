@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 
 import { getMetadataArgsStorage } from 'typeorm';
-import { TYPEORM } from '../environments';
+import { TYPEORM } from '../../environments';
 
 //Typeorm 설정
 @Injectable()

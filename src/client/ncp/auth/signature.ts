@@ -43,7 +43,8 @@ export function makeNaverCloudSignature(
     'x-ncp-iam-access-key': accessKey,
     'x-ncp-apigw-signature-v2': generateSignature(accessKey, secretKey, {
       method: method.toUpperCase(),
-      url: url + (query !== undefined ? '?' + query : ''),
+      url: url,
+      // url: url + (query !== undefined ? '?' + query : ''),
       timestamp: timestamp.toString(),
     }),
   };
