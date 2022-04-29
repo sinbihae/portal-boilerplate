@@ -1,34 +1,37 @@
-import { Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { AuthService } from '../service/auth.service';
-import { JwtGuard } from '../guards/jwt.guard';
+import { CallbackService } from '../service/callback.service';
+import { UserAuth } from '../domain/user.auth';
+import { Request, Response } from 'express';
+import { plainToClass } from 'class-transformer';
 
-@Controller('/auth')
-export class AuthController {
-  constructor(private authService: AuthService) {}
+@Controller('/api/auth')
+export class CallbackController {
+  constructor(private callbackService: CallbackService) {}
 
-  @UseGuards(AuthGuard('local'))
+  /**
+   * 코스콤 포털 로그인 버튼 -> 네이버 Auth 로그인 화면 -> 코스콤 callback api
+   * @param req
+   */
   @Get('loginCallback')
-  async login(@Req() req) {
-    //Todo.
+  async login(@Req() req: Request, @Res() res: Response) {
+    await this.callbackService.login(req);
     return 'login_callback';
+    // return res.redirect('/');
   }
 
-  @UseGuards(AuthGuard('local'))
   @Get('loginCallbackConsole')
   async loginConsole(@Req() req) {
     //Todo.
     return 'login_callback_console';
   }
 
-  @UseGuards(AuthGuard('local'))
   @Get('loginCallbackSubaccount')
   async loginSubaccount(@Req() req) {
     //Todo.
     return 'login_callback_subaccount';
   }
 
-  @UseGuards(AuthGuard('local'))
   @Get('logoutCallback')
   async logoutCallback(@Req() req) {
     //Todo.

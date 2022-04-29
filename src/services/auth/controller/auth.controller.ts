@@ -29,13 +29,9 @@ export class AuthController {
     return req.user;
   }
 
-  /**
-   * 인증정보 가져오기
-   * @param req
-   */
   @UseGuards(AuthGuard('local'))
   @Get('info')
-  async getInfo(@Req() req) {
+  async validToken(@Req() req) {
     return await this.authService.login(req.user);
   }
 }
