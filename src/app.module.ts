@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -9,6 +9,8 @@ import { AuthModule } from './services/auth/auth.module';
 import { UsersModule } from './services/users/users.module';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtConfigService } from './config/jwt';
+// import * as redisStore from 'cache-manager-redis-store';
+import { REDIS_HOST } from './environments';
 
 @Module({
   imports: [
@@ -18,6 +20,11 @@ import { JwtConfigService } from './config/jwt';
     JwtModule.registerAsync({
       useClass: JwtConfigService,
     }), //JWT 설정
+    CacheModule.register({
+      // store: redisStore,
+      host: REDIS_HOST,
+      port: 6379,
+    }),
     NcpClientModule, //NCP 클라이어트 모듈 설정
 
     //Controller

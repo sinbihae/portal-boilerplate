@@ -37,8 +37,11 @@
 
 
 ## Redis 연동
+cache-manager-redis-store
 
 
+## Session 사용
+cookie-parser, express-session
 
 ## 인증방법
 : https://docs.nestjs.kr/security/authentication

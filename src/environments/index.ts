@@ -14,4 +14,7 @@ const TYPEORM = {
   database: 'portal_test',
 };
 
-export { PORT, TYPEORM };
+//Redis 설정
+const REDIS_HOST: string = process.env.REDIS_HOST || '127.0.0.1';
+
+export { PORT, TYPEORM, REDIS_HOST };
